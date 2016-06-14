@@ -1,6 +1,6 @@
 class BusRoutesController < ApplicationController
 
   def index 
-    BusRoute.includes(:stop)
+    @bus_route = BusRoute.all
   end
 end
