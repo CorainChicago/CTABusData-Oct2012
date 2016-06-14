@@ -1,3 +1,6 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+data = [1,2;34,55,66,78];
+body = d3.select("body");
+div = body.append("div");
+div.text("Hello, world!");
+
+d3.selectAll("body").text("helloo there")
