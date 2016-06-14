@@ -16,8 +16,8 @@ $.ajax({
 
   function draw(data) {
       var color = d3.scale.category20b();
-      var width = 420,
-          barHeight = 20;
+      var width = 820,
+          barHeight = 35;
    
       var x = d3.scale.linear()
           .range([0, width])
@@ -43,10 +43,10 @@ $.ajax({
    
       bar.append("text")
           .attr("x", function (d) {
-                    return x(d) - 10;
+                    return x(d) - 30;
                 })
-          .attr("y", barHeight / 2)
-          .attr("dy", ".35em")
+          .attr("y", barHeight / 3)
+          .attr("dy", ".55em")
           .style("fill", "white")
           .text(function (d) {
                     return d;
@@ -57,4 +57,3 @@ $.ajax({
       console.log("error")
   }
 
-  

@@ -8,7 +8,7 @@ class StopsController < ApplicationController
     hash = BusRoute.bus_hash_by_stop_count
     respond_to do |format|
       format.json {
-        render :json => BusRoute.order_by_stops(hash).flatten
+        render :json => BusRoute.order_by_stops(hash).map{|d| d[1] }.flatten
       }
     end
   end
