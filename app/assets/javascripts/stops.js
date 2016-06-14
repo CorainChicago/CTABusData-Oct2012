@@ -57,3 +57,8 @@ $.ajax({
       console.log("error")
   }
 
+$(document).ready(function(){
+  $("text").hover(function(){
+    console.log("hi");
+  });
+})
