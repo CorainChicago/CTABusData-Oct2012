@@ -6,7 +6,7 @@ $.ajax({
     data: "{}", 
     async: true,
     success: function (data) {
-       draw(data);
+       draw(data[1], data[0]);
     },
     error: function (result) {
       console.log("error");
@@ -14,9 +14,17 @@ $.ajax({
     }
     });
 
-  function draw(data) {
+  function findBusNumber(distance, data_array){
+    for (i in data_array){
+      if (distance == data_array[i][1]){
+        return data_array[i]
+      }
+    }
+  }  
+
+  function draw(data, data_array) {
       var color = d3.scale.category20b();
-      var width = 820,
+      var width = 1050,
           barHeight = 35;
    
       var x = d3.scale.linear()
@@ -43,13 +51,14 @@ $.ajax({
    
       bar.append("text")
           .attr("x", function (d) {
-                    return x(d) - 30;
+                    return x(d) - 140;
                 })
           .attr("y", barHeight / 3)
-          .attr("dy", ".55em")
+          .attr("dy", ".80em")
           .style("fill", "white")
           .text(function (d) {
-                    return d;
+                    x = findBusNumber(d, data_array)
+                    return "Bus #"+ x[0] + " - " + x[1] + " stops";
                 });
   }
    
@@ -57,8 +66,3 @@ $.ajax({
       console.log("error")
   }
 
-$(document).ready(function(){
-  $("text").hover(function(){
-    console.log("hi");
-  });
-})
