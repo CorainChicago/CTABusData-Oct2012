@@ -23,7 +23,7 @@ RSpec.describe BusRoute, type: :model do
     it "has a list of the bus stop ids as the values" do 
       BusRoute.create!(bus_number: 126, stop_id: 2, boarding_number: 183, stop_order: 1)
       result = BusRoute.bus_hash_by_stop_count
-      expect(result.values.first.count).to eq 2 
+      expect(result.values.first).to eq 2 
     end
   end
 
