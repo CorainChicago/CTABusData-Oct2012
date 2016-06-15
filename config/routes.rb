@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   resources :bus_routes
   # resources :stops
   get 'stops/' => 'stops#index' 
-  get 'stops/data' => 'stops/data'
+  get 'stops/data_bus_stops' => 'stops/data_bus_stops'
+  get 'stops/data_stop_location_and_bus_count' => 'stops/data_stop_location_and_bus_count'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
