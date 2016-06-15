@@ -4,7 +4,9 @@ class Stop < ActiveRecord::Base
 
   def self.hash_by_location_and_bus_count
     all.each_with_object({}) do |s, accum|
-      accum[s.con_street + " " + s.cross_street] ||= {location: s.location, buses: BusRoute.where(stop.id: s.id).count}
+      location_array = s.location.tr('()', '').split(',')
+      accum[s.on_street + " " + s.cross_street] = {center: {lat: location_array[0].to_f, lng: location_array[1].to_f}, buses: BusRoute.where(stop_id: s.id).count}
     end
   end
 end
+

@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+.main{
+  margin-right: 30%;
+  margin-left: 30%;
+  width: 40%;
+}

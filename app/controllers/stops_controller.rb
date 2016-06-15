@@ -16,9 +16,8 @@ class StopsController < ApplicationController
 
   def data_stop_location_and_bus_count
     respond_to do |format|
-      byebug
       format.json {
-        render :json => Stop.hash_by_location_and_bus_count
+        render :json => Stop.hash_by_location_and_bus_count.to_json
       }
     end
   end

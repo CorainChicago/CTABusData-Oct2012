@@ -6,34 +6,33 @@ $.ajax({
     data: "{}", 
     async: true,
     success: function (data) {
-       console.log(data);
+      initMap(data);
     },
     error: function (result) {
       console.log("error");
        error();
     }
     });
-
-   var citymap = {
-    chicago: {
-      center: {lat: 41.878, lng: -87.629},
-      population: 2714856
-    },
-    newyork: {
-      center: {lat: 40.714, lng: -74.005},
-      population: 8405837
-    },
-    losangeles: {
-      center: {lat: 34.052, lng: -118.243},
-      population: 3857799
-    },
-    vancouver: {
-      center: {lat: 49.25, lng: -123.1},
-      population: 603502
-    }
-    }; 
-
-  function initMap() {
+  
+   // var citymap = {
+   //  chicago: {
+   //    center: {lat: 41.878, lng: -87.629},
+   //    population: 2714856
+   //  },
+   //  newyork: {
+   //    center: {lat: 40.714, lng: -74.005},
+   //    population: 8405837
+   //  },
+   //  losangeles: {
+   //    center: {lat: 34.052, lng: -118.243},
+   //    population: 3857799
+   //  },
+   //  vancouver: {
+   //    center: {lat: 49.25, lng: -123.1},
+   //    population: 603502
+   //  }
+   //  }; 
+  function initMap(data) {
     // Create the map.
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 11,
@@ -41,9 +40,11 @@ $.ajax({
       mapTypeId: google.maps.MapTypeId.TERRAIN
     });
 
+    var citymap = data
+    console.log(citymap)
     // Construct the circle for each value in citymap.
     // Note: We scale the area of the circle based on the population.
-    for (var city in citymap) {
+    for (var city in data) {
       // Add the circle for this city to the map.
       var cityCircle = new google.maps.Circle({
         strokeColor: '#FF0000',
@@ -53,7 +54,7 @@ $.ajax({
         fillOpacity: 0.35,
         map: map,
         center: citymap[city].center,
-        radius: Math.sqrt(citymap[city].population) * 100
+        radius: Math.sqrt(citymap[city].buses) * 100
       });
     }
    }

@@ -1,7 +1,7 @@
 $.ajax({
     type: "GET",
     contentType: "application/json; charset=utf-8",
-    url: 'stops/data',
+    url: 'stops/data_bus_stops',
     dataType: 'json',
     data: "{}", 
     async: true,
