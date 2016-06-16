@@ -73,7 +73,7 @@ function createGraph(url, type){
 $(document).on("click", "#graph_bus_boarding_average", function(){
   $('#map').remove();
   $('#graph_stops').remove();
-  $("div").append('<div id="graph_stops"><h2>Buses Graphed by Average Boarding Numbers</h2><svg id="graph"></svg><div>');
+  $("div").append('<div id="graph_stops"><h2>Graph of Stops by Bus Count</h2><svg id="graph"></svg><div>');
   createGraph('riderships/boarding_average_graph', "At");
 });
 
