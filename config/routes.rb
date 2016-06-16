@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :bus_routes
   # resources :stops
   get 'stops/' => 'stops#index' 
+  get 'stops/bus_stop_graph' => 'stops#bus_stop_graph'
   get 'stops/data_bus_stops' => 'stops#data_bus_stops'
   get 'stops/data_stop_location_and_bus_count' => 'stops#data_stop_location_and_bus_count'
   get 'stops/average_boarding_data' => 'stops#average_boarding_data'

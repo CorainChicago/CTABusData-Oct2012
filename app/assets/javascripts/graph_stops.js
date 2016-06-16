@@ -3,7 +3,7 @@ function createGraph(){
   $.ajax({
       type: "GET",
       contentType: "application/json; charset=utf-8",
-      url: 'stops/data',
+      url: 'stops/bus_stop_graph',
       dataType: 'json',
       data: "{}", 
       async: true,
@@ -57,7 +57,7 @@ function createGraph(){
                     return x(d) - 140;
                 })
           .attr("y", barHeight / 3)
-          .attr("dy", ".80em")
+          .attr("dy", "1.80em")
           .style("fill", "white")
           .text(function (d) {
                     x = findBusNumber(d, data_array)
@@ -72,6 +72,6 @@ function error() {
 
 $(document).on("click", "#show_bar_graph_stops", function(citymap, map){
   $('#map').remove();
-  $(this).append('<svg id="graph"></svg>');
+  $("div").append('<div id="graph_stops"><h2>Buses Graphed by Number of Stops</h2><svg id="graph"></svg><div>');
   createGraph();
 });

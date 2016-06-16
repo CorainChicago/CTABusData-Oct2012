@@ -1,6 +1,23 @@
 var map;
+function initMap() {
+  // Create the map.
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 11,
+    center: {lat: 41.8781, lng: -87.6298},
+    mapTypeId: google.maps.MapTypeId.TERRAIN
+  });
+}
+
+function checkForGraph(){
+  if ( $( "#graph_stops" ).length ){
+    $('#graph_stops').remove();
+    $('.display').append('<div id= "map"> </div>');
+    initMap();
+  }
+}
 
 function getBusStopData(){
+  checkForGraph();
   $.ajax({
     type: "GET",
     contentType: "application/json; charset=utf-8",
@@ -16,9 +33,10 @@ function getBusStopData(){
        error();
     }
   });
-} 
+}
 
 function getBoardingData(){
+  checkForGraph();
   $.ajax({
     type: "GET",
     contentType: "application/json; charset=utf-8",
@@ -36,14 +54,6 @@ function getBoardingData(){
   });
 } 
 
-function initMap() {
-  // Create the map.
-  map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 11,
-    center: {lat: 41.8781, lng: -87.6298},
-    mapTypeId: google.maps.MapTypeId.TERRAIN
-  });
-}
   
 function showData(bus_stop_data, map, color, item){
   for (var stop in bus_stop_data) {
