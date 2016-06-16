@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20160614135450) do
   create_table "bus_routes", force: :cascade do |t|
     t.integer  "bus_number"
     t.integer  "stop_id"
-    t.integer  "boarding_number"
+    t.float    "boarding_number"
     t.integer  "stop_order"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
