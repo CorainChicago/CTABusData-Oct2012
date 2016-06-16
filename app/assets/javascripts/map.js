@@ -73,11 +73,11 @@ function showData(data, map, color){
 $(document).on("click", "#show_bus_stops", function(){
   checkForGraph();
   $("#display").append('<div id="map_stops"><h2>Map of Bus Stops by Number of Stops Made</h2></div>');
-  getBusStopData('stops/data_stop_location_and_bus_count', 'red');
+  getBusStopData('riderships/data_stop_location_and_bus_count', 'red');
 });
 
 $(document).on("click", "#map_boarding_data", function(){
   checkForGraph();
   $("#display").append('<div id="map_stops"><h2>Map of Bus Stops by Average Number of People Boarding </h2></div>');
-  getBoardingData('stops/boarding_average_graph', 'blue');
+  getBoardingData('riderships/boarding_average_graph', 'blue');
 });
