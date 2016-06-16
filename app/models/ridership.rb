@@ -34,7 +34,7 @@ class Ridership < ActiveRecord::Base
 
   def self.stop_hash_by_bus_route_count
     all.each_with_object({}) do |r, accum|
-      accum[r.location] = [s, s.bus_routes.count]
+      accum[r.location] = [r, r.bus_number.split(',').count]
     end
   end
 

@@ -16,7 +16,7 @@ class RidershipsController < ApplicationController
     end
   end
 
-  #for map and graph
+  #for map and graph of boarding averages
   def boarding_average_graph
     respond_to do |format|
       format.json {
@@ -24,14 +24,14 @@ class RidershipsController < ApplicationController
       }
     end
   end
-
-  #for graph of stops by number of buses
+  #[[bus]]
   def stops_by_buses
-    hash = Ridership.stop_hash_by_bus_route_count
-    bus_array = Ridership.order_by_bus_route_count(hash)
+    hash = Ridership.bus_hash_by_stop_count
+    bus_array = Ridership.order_by_stops(hash).first
+    p [bus_array, bus_array.map{|d| d[1] }]
     respond_to do |format|
       format.json {
-        render :json => [bus_array, bus_array.map{|d| d[1] }.flatten]
+        render :json => [bus_array, bus_array.map{|d| d[1] }]
       }
     end
   end

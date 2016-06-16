@@ -18,7 +18,8 @@ function createGraph(url, type){
 
   function findBusNumber(distance, data_array){
     for (i in data_array){
-      if (distance == data_array[i][1]){
+
+      if (distance == data_array[i][1] && data_array[i][1] !== null){
         return data_array[i]
       }
     }
@@ -60,7 +61,7 @@ function createGraph(url, type){
           .style("fill", "white")
           .text(function (d) {
                     x = findBusNumber(d, data_array)
-                    return type +" #"+ x[0] + " - " + x[1];
+                    return type +" #"+ x + " - " + x;
                 });
   }
   function error() {

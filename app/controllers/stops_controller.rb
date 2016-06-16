@@ -18,9 +18,10 @@ class StopsController < ApplicationController
   end
 
   #for graph of stops by number of buses
-  def stops_by_buses
+  def show_graph_stops_by_route
     hash = Stop.stop_hash_by_bus_route_count
     bus_array = Stop.order_by_bus_route_count(hash)
+    p [bus_array, bus_array.map{|d| d[1] }.flatten]
     respond_to do |format|
       format.json {
         render :json => [bus_array, bus_array.map{|d| d[1] }.flatten]
