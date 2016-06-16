@@ -57,6 +57,5 @@ class Ridership < ActiveRecord::Base
   end
 end
 
-stops_by_buses
 
 

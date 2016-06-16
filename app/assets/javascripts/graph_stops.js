@@ -79,5 +79,5 @@ $(document).on("click", "#graph_stops_by_buses", function(citymap, map){
   $('#map').remove();
   $('#graph_stops').remove();
   $("div").append('<div id="graph_stops"><h2>Stops Graphed by Number of Buses</h2><svg id="graph"></svg><div>');
-  createGraph('riderships/show_graph_stops_by_route', "Stop");
+  createGraph('riderships/stops_by_buses', "Stop");
 });
