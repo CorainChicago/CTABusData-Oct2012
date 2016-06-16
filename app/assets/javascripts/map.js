@@ -9,7 +9,7 @@ function initMap() {
 }
 
 function checkForGraph(){
-  if ( $( "#graph_stops" ).length ){
+  if ( $( "#graph_stops" ).length || $( "#map" ).length){
     $('#graph_stops').remove();
     $('.display').append('<div id= "map"> </div>');
     initMap();
