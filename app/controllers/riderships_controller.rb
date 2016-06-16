@@ -17,13 +17,11 @@ class RidershipsController < ApplicationController
     end
   end
 
-  #MAP
+  #MAP of average boarding number by stop
   def boarding_average_graph
-    hash = Ridership.hash_stop_with_bus_count
-    stop_array = Ridership.order_by_stops(hash)
     respond_to do |format|
       format.json {
-        render :json => [stop_array, stop_array.map{|d| d[1] }]
+        render :json => Ridership.hash_average_boarding_data_by_stop.to_json
       }
     end
   end
