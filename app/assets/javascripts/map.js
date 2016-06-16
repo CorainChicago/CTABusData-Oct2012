@@ -8,6 +8,7 @@ function initMap() {
   });
 }
 
+
 function checkForGraph(){
   if ( $( "#graph_stops" ).length ){
     $('#graph_stops').remove();
@@ -40,7 +41,7 @@ function getBoardingData(){
   $.ajax({
     type: "GET",
     contentType: "application/json; charset=utf-8",
-    url: 'stops/average_boarding_data',
+    url: 'stops/boarding_average_graph',
     dataType: 'json',
     data: "{}", 
     async: true,
@@ -72,10 +73,12 @@ function showData(bus_stop_data, map, color, item){
   } 
 }
 
-$(document).on("click", "#show_bus_stops", function(citymap, map){
+$(document).on("click", "#show_bus_stops", function(){
+  $("#display").append('<div id="map_stops"><h2>Map of Bus Stops by Number of Stops Made</h2></div>');
   getBusStopData();
 });
 
-$(document).on("click", "#show_boarding_data", function(citymap, map){
+$(document).on("click", "#map_boarding_data", function(){
+  $("#display").append('<div id="map_stops"><h2>Map of Bus Stops by Average Number of People Boarding </h2></div>');
   getBoardingData();
 });

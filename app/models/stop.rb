@@ -2,6 +2,16 @@ class Stop < ActiveRecord::Base
   has_many :bus_routes
   validates :location, uniqueness: true
 
+  def self.stop_hash_by_bus_route_count
+    all.each_with_object({}) do |s, accum|
+      accum[s.id] = BusRoute.where(stop_id: s.id).count
+    end
+  end
+
+  def self.order_by_bus_route_count(hash)
+    hash.sort {|a,b| b[1]<=>a[1]}
+  end
+
   def self.hash_by_location_and_bus_count
     all.each_with_object({}) do |s, accum|
       location_array = s.location.tr('()', '').split(',')

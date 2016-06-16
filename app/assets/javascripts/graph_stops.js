@@ -1,14 +1,15 @@
 
-function createGraph(){
+function createGraph(url, type){
   $.ajax({
       type: "GET",
       contentType: "application/json; charset=utf-8",
-      url: 'stops/bus_stop_graph',
+      url: url,
       dataType: 'json',
       data: "{}", 
       async: true,
       success: function (data) {
-         draw(data[1], data[0]);
+          console.log(data)
+         draw(data[1], data[0], type);
       },
       error: function (result) {
         console.log("error");
@@ -25,7 +26,7 @@ function createGraph(){
     }
   }  
 
-  function draw(data, data_array) {
+  function draw(data, data_array, type) {
       var color = d3.scale.category20b();
       var width = 1050,
           barHeight = 35;
@@ -57,21 +58,28 @@ function createGraph(){
                     return x(d) - 140;
                 })
           .attr("y", barHeight / 3)
-          .attr("dy", "1.80em")
+          .attr("dy", ".75em")
           .style("fill", "white")
           .text(function (d) {
                     x = findBusNumber(d, data_array)
-                    return "Bus #"+ x[0] + " - " + x[1] + " stops";
+                    return type +" #"+ x[0] + " - " + x[1];
                 });
   }
- 
-function error() {
-    console.log("error")
-}
+  function error() {
+      console.log("error")
+  }
 
-
-$(document).on("click", "#show_bar_graph_stops", function(citymap, map){
+$(document).on("click", "#graph_bus_boarding_average", function(){
   $('#map').remove();
-  $("div").append('<div id="graph_stops"><h2>Buses Graphed by Number of Stops</h2><svg id="graph"></svg><div>');
-  createGraph();
+  $('#graph_stops').remove();
+  $("div").append('<div id="graph_stops"><h2>Buses Graphed by Average Boarding Numbers</h2><svg id="graph"></svg><div>');
+  createGraph('stops/boarding_average_graph', "Bus");
+});
+
+
+$(document).on("click", "#graph_stops_by_buses", function(citymap, map){
+  $('#map').remove();
+  $('#graph_stops').remove();
+  $("div").append('<div id="graph_stops"><h2>Stops Graphed by Number of Buses</h2><svg id="graph"></svg><div>');
+  createGraph('stops/stops_by_buses', "Stop");
 });
