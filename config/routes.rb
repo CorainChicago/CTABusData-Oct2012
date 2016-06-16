@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  resources :riderships
+  root 'riderships#index'
+  #delete once ridership routes set
   get 'stops/data_stop_location_and_bus_count' => 'stops#data_stop_location_and_bus_count'
   get 'stops/average_boarding_data_for_map' => 'stops#average_boarding_data_for_map'
   get 'stops/boarding_average_graph' => 'stops#boarding_average_graph'
   get 'stops/show_graph_stops_by_route' => 'stops#show_graph_stops_by_route'
+
+  get 'riderships/data_stop_location_and_bus_count' => 'riderships#data_stop_location_and_bus_count'
+  get 'riderships/average_boarding_data_for_map' => 'riderships#average_boarding_data_for_map'
+  get 'riderships/boarding_average_graph' => 'riderships#boarding_average_graph'
+  get 'riderships/show_graph_stops_by_route' => 'riderships#show_graph_stops_by_route'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
