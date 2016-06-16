@@ -1,5 +1,6 @@
 class Stop < ActiveRecord::Base
   has_many :bus_routes
+  validates :on_street, :cross_street, :location, presence: true
   validates :location, uniqueness: true
 
   def self.stop_hash_by_bus_route_count
@@ -22,7 +23,7 @@ class Stop < ActiveRecord::Base
   def self.hash_average_boarding_data_by_stop
     all.each_with_object({}) do |s, accum|
       location_array = s.location.tr('()', '').split(',')
-      accum[s.on_street + " " + s.cross_street] = {center: {lat: location_array[0].to_f, lng: location_array[1].to_f}, boarding_averge: BusRoute.boarding_average(s.id)}
+      accum[s.on_street + " " + s.cross_street] = {center: {lat: location_array[0].to_f, lng: location_array[1].to_f}, boarding_number: BusRoute.boarding_average(s.id)}
     end
   end
 end

@@ -1,14 +1,6 @@
 Rails.application.routes.draw do
-
-  get 'stops/stops_by_buses' => 'stops#stops_by_buses'
-  get 'stops/data_stop_location_and_bus_count' => 'stops#data_stop_location_and_bus_count'
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
   root 'welcome#index'
-
-  
+  get 'stops/data_stop_location_and_bus_count' => 'stops#data_stop_location_and_bus_count'
   get 'stops/average_boarding_data_for_map' => 'stops#average_boarding_data_for_map'
   get 'stops/boarding_average_graph' => 'stops#boarding_average_graph'
   get 'stops/show_graph_stops_by_route' => 'stops#show_graph_stops_by_route'

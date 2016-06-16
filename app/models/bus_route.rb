@@ -1,5 +1,6 @@
 class BusRoute < ActiveRecord::Base
   belongs_to :stop
+  validates :bus_number, :stop_id, :boarding_number, :stop_order, presence: true
 
   def self.bus_hash_by_stop_count
     all.each_with_object({}) do |r, accum|

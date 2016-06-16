@@ -8,8 +8,7 @@ function createGraph(url, type){
       data: "{}", 
       async: true,
       success: function (data) {
-          console.log(data)
-         draw(data[1], data[0], type);
+        draw(data[1], data[0], type);
       },
       error: function (result) {
         console.log("error");
