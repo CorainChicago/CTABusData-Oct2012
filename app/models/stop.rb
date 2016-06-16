@@ -3,6 +3,12 @@ class Stop < ActiveRecord::Base
   validates :on_street, :cross_street, :location, presence: true
   validates :location, uniqueness: true
 
+  def self.stop_array_by_bus_route_count
+    all.each_with_object([]) do |s, accum|
+      accum << [s, s.bus_routes.count]
+    end
+  end
+
   def self.stop_hash_by_bus_route_count
     all.each_with_object({}) do |s, accum|
       accum[s.id] = [s, s.bus_routes.count]
