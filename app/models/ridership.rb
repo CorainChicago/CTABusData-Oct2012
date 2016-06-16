@@ -48,14 +48,32 @@ class Ridership < ActiveRecord::Base
       accum[s.on_street + " " + s.cross_street] = {center: {lat: location_array[0].to_f, lng: location_array[1].to_f}, buses: s.bus_routes.count}
     end
   end
-
+  #this one
   def self.hash_average_boarding_data_by_stop
-    all.each_with_object({}) do |s, accum|
-      location_array = s.location.tr('()', '').split(',')
-      accum[s.on_street + " " + s.cross_street] = {center: {lat: location_array[0].to_f, lng: location_array[1].to_f}, boarding_number: s.bus_routes.inject(0) {|sum, b| sum + b.boarding_number}}
+    all.each_with_object() do |r, accum|
+      location_array = r.location.tr('()', '').split(',')
+      accum[r.on_street + " " + r.cross_street] = {center: {lat: location_array[0], lng: location_array[1]}, boarding_number: r.boarding_number}
     end
   end
+
+  def self.hash_stop_with_bus_count
+    hash = {}
+    all.each_with_object({}) do |r, accum|
+      return if r.bus_number == nil
+      buses = r.bus_number.split(',')
+      buses.each do |b| 
+        if hash[r.on_street + " and " + r.cross_street] == nil
+          hash[r.on_street + " and " + r.cross_street] = 1
+        else
+          hash[r.on_street + " and " + r.cross_street] += 1
+        end
+      end
+    end
+    return hash
+  end
 end
+
+
 
 
 
