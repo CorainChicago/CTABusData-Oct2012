@@ -58,21 +58,21 @@ function showData(data, map, color){
     console.log("showData")
     var cityCircle = new google.maps.Circle({
       strokeColor: color,
-      strokeOpacity: 0.8,
-      strokeWeight: 2,
+      strokeOpacity: 0.4,
+      strokeWeight: 1,
       fillColor: color,
-      fillOpacity: 0.35,
+      fillOpacity: 0.25,
       map: map,
       center: data[stop].center,
       radius: Math.sqrt(data[stop].boarding_number) * 20,
-      radius: Math.sqrt(data[stop].buses) * 50
+      radius: Math.sqrt(data[stop].buses) * 20
     });
   } 
 }
 
 $(document).on("click", "#show_bus_stops", function(){
   checkForGraph();
-  $("#display").append('<div id="map_stops"><h2>Map of Bus Stops by Number of Stops Made</h2></div>');
+  $("#display").append('<div id="map_stops"><h2>Map of Number of Buses Using Each Stop/h2></div>');
   getBusStopData('riderships/data_stop_location_and_bus_count', 'red');
 });
 
