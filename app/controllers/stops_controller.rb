@@ -21,4 +21,13 @@ class StopsController < ApplicationController
       }
     end
   end
+
+  def average_boarding_data
+    respond_to do |format|
+      format.json {
+        puts "hi"
+        render :json => Stop.hash_average_boarding_data_by_stop.to_json
+      }
+    end
+  end
 end

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'stops/' => 'stops#index' 
   get 'stops/data_bus_stops' => 'stops#data_bus_stops'
   get 'stops/data_stop_location_and_bus_count' => 'stops#data_stop_location_and_bus_count'
+  get 'stops/average_boarding_data' => 'stops#average_boarding_data'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

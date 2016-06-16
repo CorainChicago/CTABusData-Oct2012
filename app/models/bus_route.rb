@@ -11,4 +11,8 @@ class BusRoute < ActiveRecord::Base
   def self.order_by_stops(hash)
     hash.sort {|a,b| b[1]<=>a[1]}
   end
+
+  def self.boarding_average(stop_id)
+    BusRoute.find_by(stop_id: stop_id).boarding_number rescue nil
+  end
 end
