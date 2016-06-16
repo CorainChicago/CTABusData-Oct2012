@@ -3,7 +3,7 @@ class CreateBusRoutes < ActiveRecord::Migration
     create_table :bus_routes do |t|
       t.integer :bus_number
       t.integer :stop_id
-      t.integer :boarding_number
+      t.float :boarding_number
       t.integer :stop_order
 
       t.timestamps null: false

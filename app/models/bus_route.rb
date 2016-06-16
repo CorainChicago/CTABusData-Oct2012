@@ -5,7 +5,7 @@ class BusRoute < ActiveRecord::Base
   def self.bus_hash_by_stop_count
     all.each_with_object({}) do |r, accum|
       accum[r.bus_number] ||= 0
-      accum[r.bus_number] +=1
+      accum[r.bus_number] += 1
     end
   end
 

@@ -11,8 +11,7 @@ function createGraph(url, type){
         draw(data[1], data[0], type);
       },
       error: function (result) {
-        console.log("error");
-         error();
+        error();
       }
     });
 }
