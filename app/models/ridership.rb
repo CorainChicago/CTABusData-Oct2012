@@ -1,6 +1,5 @@
 class Ridership < ActiveRecord::Base
 
-  #t
    def self.bus_hash_by_stop_count
     all.each_with_object({}) do |r, accum|
       return if r.bus_number == nil
@@ -42,7 +41,6 @@ class Ridership < ActiveRecord::Base
     array.sort {|a,b| b[1]<=>a[1]}
   end
 
-  #method below needs to be fixed and mark methods working and used by graphs
 
   def self.hash_by_location_and_bus_count
     all.each_with_object({}) do |r, accum|
@@ -50,7 +48,7 @@ class Ridership < ActiveRecord::Base
       accum[r.on_street + " " + r.cross_street] = {center: {lat: location_array[0].to_f, lng: location_array[1].to_f}, buses: r.boarding_number}
     end
   end
-  #this one
+  
   def self.hash_average_boarding_data_by_stop
     all.each_with_object() do |r, accum|
       location_array = r.location.tr('()', '').split(',')
