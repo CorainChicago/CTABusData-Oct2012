@@ -4,9 +4,15 @@ Rails.application.routes.draw do
   get  'riderships/index' =>'riderships#index'
 
   get 'riderships/data_stop_location_and_bus_count' => 'riderships#data_stop_location_and_bus_count'
+  
   get 'riderships/average_boarding_data_for_map' => 'riderships#average_boarding_data_for_map'
+  
   get 'riderships/boarding_average_graph' => 'riderships#boarding_average_graph'
-  get 'riderships/stops_by_buses' => 'riderships#stops_by_buses'
+  
+  get 'riderships/stops_by_amount_of_buses' => 'riderships#stops_by_amount_of_buses'
+  
+  #done
+  get 'riderships/buses_by_stops' => 'riderships#buses_by_stops'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
