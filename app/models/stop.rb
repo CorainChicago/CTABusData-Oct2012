@@ -5,7 +5,7 @@ class Stop < ActiveRecord::Base
 
   def self.stop_hash_by_bus_route_count
     all.each_with_object({}) do |s, accum|
-      accum[s.id] = s.bus_routes.count
+      accum[s.id] = [s, s.bus_routes.count]
     end
   end
 
