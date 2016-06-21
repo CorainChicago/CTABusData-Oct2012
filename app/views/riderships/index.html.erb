@@ -7,10 +7,13 @@
     <p>The stop at <%=@most_active[0][:on_street] %> and  <%=@most_active[0][:cross_street] %> had the most buses stopping there with <%=@most_active[1] %> buses.</p>
   </section>
   <section class="display">
-    <button type="button" id="show_bus_stops">Map Bus Stops</button>
-    <button type="button" id="map_boarding_data">Map the Average Boarding Numbers</button>
+    <button type="button" id="map_of_stops_by_bus_counts">Map Bus Stops</button>
+    <button type="button" id="map_of_boarding_average_by_stop">Map the Average Boarding Numbers</button>
     <button type="button" id="graph_stops_by_number_of_buses">Graph of Stops by Bus Count</button>
     <button type="button" id="graph_buses_by_stops">Graph of Buses by Number of Stops</button>
     <div id= "map"> </div>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['API_KEY']%>&callback=initMap">
+    </script>
   </section>
 </div>  

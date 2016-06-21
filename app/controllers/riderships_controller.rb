@@ -9,7 +9,7 @@ class RidershipsController < ApplicationController
   end
 
   # MAP data_stop_location_and_bus_count
-  def data_stop_location_and_bus_count
+  def map_of_stops_by_bus_counts
     respond_to do |format|
       format.json {
         render :json => Ridership.hash_by_location_and_bus_count.to_json
@@ -18,7 +18,7 @@ class RidershipsController < ApplicationController
   end
 
   #MAP of average boarding number by stop
-  def boarding_average_graph
+  def map_of_boarding_average_by_stop
     respond_to do |format|
       format.json {
         render :json => Ridership.hash_average_boarding_data_by_stop.to_json

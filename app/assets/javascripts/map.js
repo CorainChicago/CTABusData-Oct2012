@@ -25,10 +25,10 @@ function getBusStopData(url){
     data: "{}", 
     async: true,
     success: function (data) {
-      showData(data, map, '#FF0000');
+      showDataBusStop(data, map, '#FF0000');
     },
     error: function (result) {
-      console.log("error");
+      console.log("Error in the ajax for the bus stop data");
        error();
     }
   });
@@ -43,19 +43,18 @@ function getBoardingData(url){
     data: "{}", 
     async: true,
     success: function (data) {
-      showData(data, map, "blue");
+      showDataBoarding(data, map, "blue");
     },
     error: function (result) {
-      console.log("error");
+      console.log("Error in the ajax for the boarding data");
     }
   });
 } 
 
   
-function showData(data, map, color){
+function showDataBoarding(data, map, color){
   for (var stop in data) {
   // Add the circle for this stop to the map.
-    console.log("showData")
     var cityCircle = new google.maps.Circle({
       strokeColor: color,
       strokeOpacity: 0.4,
@@ -64,20 +63,35 @@ function showData(data, map, color){
       fillOpacity: 0.25,
       map: map,
       center: data[stop].center,
-      radius: Math.sqrt(data[stop].buses) * 20,
-      radius: Math.sqrt(data[stop].boarding_number) * 20
+      radius: Math.sqrt(data[stop].boarding_number) * 30,
     });
   } 
 }
 
-$(document).on("click", "#show_bus_stops", function(){
+function showDataBusStop(data, map, color){
+  for (var stop in data) {
+  // Add the circle for this stop to the map.
+    var cityCircle = new google.maps.Circle({
+      strokeColor: color,
+      strokeOpacity: 0.4,
+      strokeWeight: 1,
+      fillColor: color,
+      fillOpacity: 0.25,
+      map: map,
+      center: data[stop].center,
+      radius: Math.sqrt(data[stop].buses) * 30
+    });
+  } 
+}
+
+$(document).on("click", "#map_of_stops_by_bus_counts", function(){
   checkForGraph();
   $("#display").append('<div id="map_stops"><h2>Map of Number of Buses Using Each Stop/h2></div>');
-  getBusStopData('riderships/data_stop_location_and_bus_count');
+  getBusStopData('riderships/map_of_stops_by_bus_counts');
 });
 
-$(document).on("click", "#map_boarding_data", function(){
+$(document).on("click", "#map_of_boarding_average_by_stop", function(){
   checkForGraph();
   $("#display").append('<div id="map_stops"><h2>Map of Bus Stops by Average Number of People Boarding </h2></div>');
-  getBoardingData('riderships/boarding_average_graph');
+  getBoardingData('riderships/map_of_boarding_average_by_stop');
 });
