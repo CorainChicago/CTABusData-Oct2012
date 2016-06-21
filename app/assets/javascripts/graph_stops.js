@@ -18,12 +18,15 @@ function createGraph(url, type){
 
   function findBusNumber(distance, data_array){
     for (i in data_array){
-
       if (distance == data_array[i][1] && data_array[i][1] !== null){
-        return data_array[i]
+        bus = data_array[i]
+        data_array.splice(i,1)
+        return bus
       }
     }
   }  
+
+
 
   function draw(data, data_array, type) {
       var color = d3.scale.category20b();
@@ -70,11 +73,13 @@ function createGraph(url, type){
       console.log("error")
   }
 
-$(document).on("click", "#stops_by_amount_of_buses", function(){
+
+
+$(document).on("click", "#graph_stops_by_number_of_buses", function(){
   $('#map').remove();
   $('#graph_stops').remove();
   $("div").append('<div id="graph_stops"><h2>Graph of Stops by Bus Count</h2><svg id="graph"></svg><div>');
-  createGraph('riderships/stops_by_amount_of_buses', "At");
+  createGraph('riderships/graph_stops_by_number_of_buses', "At");
 });
 
 
@@ -82,5 +87,5 @@ $(document).on("click", "#graph_buses_by_stops", function(citymap, map){
   $('#map').remove();
   $('#graph_stops').remove();
   $("div").append('<div id="graph_stops"><h2>Graph of Buses by Number of Stops</h2><svg id="graph"></svg><div>');
-  createGraph('riderships/buses_by_stops', "Bus");
+  createGraph('riderships/graph_buses_by_number_stops', "Bus");
 });

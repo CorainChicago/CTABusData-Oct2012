@@ -13,9 +13,9 @@ class Ridership < ActiveRecord::Base
       end
     end
   end
-  #t
-  def self.order_by_stops(hash)
-    hash.sort {|a,b| b[1]<=>a[1]}
+
+  def self.order_by_stops(item)
+    item.sort {|a,b| b[1]<=>a[1]}
   end
 
   def self.boarding_average(location)
@@ -36,12 +36,6 @@ class Ridership < ActiveRecord::Base
       accum[r.location] = [r, r.bus_number.split(',').count]
     end
   end
-
-  #duplicate method see line 17
-  def self.order_by_bus_route_count(array)
-    array.sort {|a,b| b[1]<=>a[1]}
-  end
-
 
   def self.hash_by_location_and_bus_count
     all.each_with_object({}) do |r, accum|
