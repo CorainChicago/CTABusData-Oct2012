@@ -70,17 +70,17 @@ function createGraph(url, type){
       console.log("error")
   }
 
-$(document).on("click", "#graph_bus_boarding_average", function(){
+$(document).on("click", "#stops_by_amount_of_buses", function(){
   $('#map').remove();
   $('#graph_stops').remove();
-  $("div").append('<div id="graph_stops"><h2>Buses Graphed by Average Boarding Numbers</h2><svg id="graph"></svg><div>');
-  createGraph('riderships/boarding_average_graph', "At");
+  $("div").append('<div id="graph_stops"><h2>Graph of Stops by Bus Count</h2><svg id="graph"></svg><div>');
+  createGraph('riderships/stops_by_amount_of_buses', "At");
 });
 
 
-$(document).on("click", "#graph_stops_by_buses", function(citymap, map){
+$(document).on("click", "#graph_buses_by_stops", function(citymap, map){
   $('#map').remove();
   $('#graph_stops').remove();
   $("div").append('<div id="graph_stops"><h2>Graph of Buses by Number of Stops</h2><svg id="graph"></svg><div>');
-  createGraph('riderships/stops_by_buses', "Bus");
+  createGraph('riderships/buses_by_stops', "Bus");
 });

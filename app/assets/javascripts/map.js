@@ -16,7 +16,7 @@ function checkForGraph(){
   }
 }
 
-function getBusStopData(url, color, item){
+function getBusStopData(url){
   $.ajax({
     type: "GET",
     contentType: "application/json; charset=utf-8",
@@ -34,7 +34,7 @@ function getBusStopData(url, color, item){
   });
 }
 
-function getBoardingData(url, color, type){
+function getBoardingData(url){
   $.ajax({
     type: "GET",
     contentType: "application/json; charset=utf-8",
@@ -43,7 +43,7 @@ function getBoardingData(url, color, type){
     data: "{}", 
     async: true,
     success: function (data) {
-      showData(data, map, color);
+      showData(data, map, "blue");
     },
     error: function (result) {
       console.log("error");
@@ -58,26 +58,26 @@ function showData(data, map, color){
     console.log("showData")
     var cityCircle = new google.maps.Circle({
       strokeColor: color,
-      strokeOpacity: 0.8,
-      strokeWeight: 2,
+      strokeOpacity: 0.4,
+      strokeWeight: 1,
       fillColor: color,
-      fillOpacity: 0.35,
+      fillOpacity: 0.25,
       map: map,
       center: data[stop].center,
-      radius: Math.sqrt(data[stop].boarding_number) * 20,
-      radius: Math.sqrt(data[stop].buses) * 50
+      radius: Math.sqrt(data[stop].buses) * 20,
+      radius: Math.sqrt(data[stop].boarding_number) * 20
     });
   } 
 }
 
 $(document).on("click", "#show_bus_stops", function(){
   checkForGraph();
-  $("#display").append('<div id="map_stops"><h2>Map of Bus Stops by Number of Stops Made</h2></div>');
-  getBusStopData('stops/data_stop_location_and_bus_count', 'red');
+  $("#display").append('<div id="map_stops"><h2>Map of Number of Buses Using Each Stop/h2></div>');
+  getBusStopData('riderships/data_stop_location_and_bus_count');
 });
 
 $(document).on("click", "#map_boarding_data", function(){
   checkForGraph();
   $("#display").append('<div id="map_stops"><h2>Map of Bus Stops by Average Number of People Boarding </h2></div>');
-  getBoardingData('stops/boarding_average_graph', 'blue');
+  getBoardingData('riderships/boarding_average_graph');
 });
