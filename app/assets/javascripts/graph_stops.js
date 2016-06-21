@@ -18,12 +18,15 @@ function createGraph(url, type){
 
   function findBusNumber(distance, data_array){
     for (i in data_array){
-
       if (distance == data_array[i][1] && data_array[i][1] !== null){
-        return data_array[i]
+        bus = data_array[i]
+        data_array.splice(i,1)
+        return bus
       }
     }
   }  
+
+
 
   function draw(data, data_array, type) {
       var color = d3.scale.category20b();
@@ -69,6 +72,8 @@ function createGraph(url, type){
   function error() {
       console.log("error")
   }
+
+
 
 $(document).on("click", "#graph_stops_by_number_of_buses", function(){
   $('#map').remove();

@@ -5,7 +5,7 @@ class RidershipsController < ApplicationController
     @longest = Ridership.order_by_stops(bus_hash).first
 
     stop_array = Ridership.stop_array_by_bus_route_count
-    @most_active = Ridership.order_by_bus_route_count(stop_array).first.flatten
+    @most_active = Ridership.order_by_stops(stop_array).first.flatten
   end
 
   # MAP data_stop_location_and_bus_count
@@ -43,7 +43,6 @@ class RidershipsController < ApplicationController
     bus_array = Ridership.order_by_stops(hash)
     respond_to do |format|
       format.json {
-        p bus_array
         render :json => [bus_array, bus_array.map{|d| d[1] }]
       }
     end
