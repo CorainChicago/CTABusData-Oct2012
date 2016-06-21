@@ -27,7 +27,7 @@ class RidershipsController < ApplicationController
   end
 
   #for graph of stops by amount of buses
-  def stops_by_amount_of_buses
+  def graph_stops_by_number_of_buses
     hash = Ridership.hash_stop_with_bus_count
     stop_array = Ridership.order_by_stops(hash)
     respond_to do |format|
@@ -38,7 +38,7 @@ class RidershipsController < ApplicationController
   end
 
   #For Graph of buses by number of stops
-  def buses_by_stops
+  def graph_buses_by_number_stops
     hash = Ridership.bus_hash_by_stop_count
     bus_array = Ridership.order_by_stops(hash)
     respond_to do |format|
