@@ -24,14 +24,7 @@ ActiveRecord::Schema.define(version: 20160621182943) do
     t.string   "location"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-  end
-
-  create_table "stops", force: :cascade do |t|
-    t.string   "on_street"
-    t.string   "cross_street"
-    t.string   "location"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.float    "alightings"
   end
 
 end
