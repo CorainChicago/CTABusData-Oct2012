@@ -64,8 +64,8 @@ function showData(data, map, color){
       fillOpacity: 0.25,
       map: map,
       center: data[stop].center,
-      radius: Math.sqrt(data[stop].buses) * 20
-      radius: Math.sqrt(data[stop].boarding_number) * 20,
+      radius: Math.sqrt(data[stop].buses) * 20,
+      radius: Math.sqrt(data[stop].boarding_number) * 20
     });
   } 
 }

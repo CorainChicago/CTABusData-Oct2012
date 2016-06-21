@@ -37,6 +37,7 @@ class Ridership < ActiveRecord::Base
     end
   end
 
+  #duplicate method see line 17
   def self.order_by_bus_route_count(array)
     array.sort {|a,b| b[1]<=>a[1]}
   end
